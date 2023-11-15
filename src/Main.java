@@ -15,7 +15,6 @@ public class Main {
                     4 - вывод книги по индексу;
                     0 - выход; \n
                     """);
-
             System.out.print("Введите операцию: ");
             operation = in.nextInt();
 
