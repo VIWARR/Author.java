@@ -9,7 +9,6 @@ public class Main {
             Scanner in = new Scanner(System.in);
             System.out.print("Введите операцию: ");
             operation = in.nextInt();
-            System.out.println();
 
             switch (operation) {
                 case 1:
@@ -38,6 +37,14 @@ public class Main {
                     b1.setBook(nameBook, a1, yearBook);
 
                     lib.addBook(b1);
+                case 3:
+                    System.out.print("Введите индекс удаляемого элемента: ");
+                    int indexRemove = in.nextInt();
+                    lib.removeBook(indexRemove);
+                case 4:
+                    System.out.print("Введите индекс выводимого элемента: ");
+                    int indexGetBook = in.nextInt();
+                    lib.getBookInd(indexGetBook);
             }
 
         }
