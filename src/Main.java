@@ -7,6 +7,15 @@ public class Main {
             Library lib = new Library();
 
             Scanner in = new Scanner(System.in);
+            System.out.print("""
+                    Меню:
+                    1 - вывод всех книг;
+                    2 - добавление книги;
+                    3 - удаление книги;
+                    4 - вывод книги по индексу;
+                    0 - выход; \n
+                    """);
+
             System.out.print("Введите операцию: ");
             operation = in.nextInt();
 
