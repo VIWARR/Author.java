@@ -1,7 +1,6 @@
 package by.fruitreal.repositories;
 
 import by.fruitreal.bean.*;
-import by.fruitreal.util.ProductIsNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +11,12 @@ public class ProductRepository {
 
     public Product create(String name, int price, Company company) {
         Product product = new Product(name, price, company);
-        PRODUCT_TABLE.add(product);
+        addPRODUCT_TABLE(product);
         return product;
+    }
+
+    public void addPRODUCT_TABLE(Product product) {
+        PRODUCT_TABLE.add(product);
     }
 
     public Product findById(int id) {
@@ -25,18 +28,30 @@ public class ProductRepository {
         return null;
     }
 
-    public void deleteById(int id) {
+    public Product deleteById(int id) {
         Product product = findById(id);
-        ProductIsNull.errorIfProductIsNull(product);
+        if (product == null) {
+            throw new RuntimeException("The product id: "+id+" was not found");
+        }
         PRODUCT_TABLE.remove(product);
+        return product;
     }
 
-    public void updateById(int id, String name, int price, Company company) {
-        Product product = findById(id);
-        deleteById(id);
+    public Product updateNameById(int id, String name) {
+        Product product = deleteById(id);
         product.setName(name);
+        return product;
+    }
+
+    public Product updatePriceById(int id, int price) {
+        Product product = deleteById(id);
         product.setPrice(price);
+        return product;
+    }
+
+    public Product updateCompanyById(int id, Company company) {
+        Product product = deleteById(id);
         product.setCompany(company);
-        PRODUCT_TABLE.add(product);
+        return product;
     }
 }
