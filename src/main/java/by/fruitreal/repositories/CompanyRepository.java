@@ -37,13 +37,22 @@ public class CompanyRepository {
         return company;
     }
 
+    public Company findByOFAndName(String organizationForm, String name) {
+        for (Company company: COMPANY_TABLE) {
+            if (company.getOrganizationForm().equals(organizationForm) && company.getName().equals(name)) {
+                return company;
+            }
+        }
+        return null;
+    }
+
     public Company updateOrganizationFormById(int id, String organizationForm) {
         Company company = deleteById(id);
         company.setOrganizationForm(organizationForm);
         return company;
     }
 
-    public Company updateNameByName(int id, String name) {
+    public Company updateNameById(int id, String name) {
         Company company = deleteById(id);
         company.setName(name);
         return company;
