@@ -12,13 +12,16 @@ public class Product {
 
     private int price;
 
+    private Company company;
+
     public Product() {
     }
 
-    public Product(String name, int price) {
+    public Product(String name, int price, Company company) {
         this.id = IdCounterUtil.getId();
         this.name = name;
         this.price = price;
+        this.company = company;
     }
 
     public int getId() {
@@ -45,12 +48,23 @@ public class Product {
         this.price = price;
     }
 
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return id == product.id && Objects.equals(name, product.name) && Objects.equals(price, product.price);
+        return price == product.price &&
+                Objects.equals(id, product.id) &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(company, product.company);
     }
 
     @Override
@@ -60,6 +74,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return name + ": $" +price;
+        return name + ": $" +price + " | " + company.toString();
     }
 }

@@ -50,7 +50,9 @@ public class Company {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Company company = (Company) o;
-        return id == company.id && Objects.equals(organizationForm, company.organizationForm) && Objects.equals(name, company.name);
+        return id == company.id &&
+                Objects.equals(organizationForm, company.organizationForm) &&
+                Objects.equals(name, company.name);
     }
 
     @Override
