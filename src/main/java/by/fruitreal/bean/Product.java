@@ -74,6 +74,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return name + ": $" +price + " | " + company.toString();
+        return "ID: "+id+ " - " +name + ": $" +price + " | " + company.toString();
     }
 }

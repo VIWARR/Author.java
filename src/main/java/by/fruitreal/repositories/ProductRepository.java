@@ -37,6 +37,14 @@ public class ProductRepository {
         return product;
     }
 
+    public void deleteByCompany(Company company) {
+        for (Product product: PRODUCT_TABLE) {
+            if (product.getCompany() == company) {
+                PRODUCT_TABLE.remove(product);
+            }
+        }
+    }
+
     public Product updateNameById(int id, String name) {
         Product product = deleteById(id);
         product.setName(name);
@@ -53,5 +61,13 @@ public class ProductRepository {
         Product product = deleteById(id);
         product.setCompany(company);
         return product;
+    }
+
+    public List<Product> findAll() {
+        return new ArrayList<>(PRODUCT_TABLE);
+    }
+
+    public boolean hasProduct() {
+        return PRODUCT_TABLE.size() > 0;
     }
 }

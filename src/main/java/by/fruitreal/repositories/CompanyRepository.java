@@ -37,7 +37,16 @@ public class CompanyRepository {
         return company;
     }
 
-    public Company findByOFAndName(String organizationForm, String name) {
+    public Company deleteByOrgFormAndName(String organizationForm, String name) {
+        Company company = findByOrgFormAndName(organizationForm, name);
+        if (company == null) {
+            throw new RuntimeException("The company name: "+organizationForm + " " + name + " was not found");
+        }
+        COMPANY_TABLE.remove(company);
+        return company;
+    }
+
+    public Company findByOrgFormAndName(String organizationForm, String name) {
         for (Company company: COMPANY_TABLE) {
             if (company.getOrganizationForm().equals(organizationForm) && company.getName().equals(name)) {
                 return company;
