@@ -64,4 +64,17 @@ public class ProductService {
         companyService.deleteCascadeCompany();
     }
 
+    public void updateProductPriceById() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Input the ID: ");
+        int id = in.nextInt();
+        System.out.print("Input the new price: ");
+        int price = in.nextInt();
+
+        Product product = productRepository.updatePriceById(id, price);
+        productRepository.addPRODUCT_TABLE(product);
+        System.out.println("Price is udated" + product.toString());
+
+    }
+
 }

@@ -19,6 +19,7 @@ public class MenuService {
                     3 - removing a product by ID;
                     4 - product output by ID;
                     5 - removing a company;
+                    6 - update price by ID
                     0 - exit; \n 
                     """);
             System.out.print("Input the operation: ");
@@ -40,6 +41,8 @@ public class MenuService {
                 case 5:
                     productService.deleteCascadeCompany();
                     break;
+                case 6:
+                    productService.updateProductPriceById();
             }
         }
 
